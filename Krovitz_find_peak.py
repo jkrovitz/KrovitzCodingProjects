@@ -60,6 +60,6 @@ def test_find_peak():
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
-The recurrence relation for find peak is T(n) = T(n/2) + ϴ(1) -> T(n) = n^(Log_(2)1) -> n^0 = 1 * Log n -> Log n
+The recurrence relation for find peak is T(n) = T(n/2) + ϴ(1) ⟶ T(n) = n^(Log_(2)1) ⟶ n^0 = 1 * Log n ⟶ Log n
 according to the Master Theorem. Therefore, the solution to  this recurrence relation is ϴ(Log n).
 ================================================================================================================"""

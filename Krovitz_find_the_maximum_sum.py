@@ -83,7 +83,6 @@ def test_find_max_sum_sub_array():
     assert find_max_sum_sub_array([-2, 30, 70, -2]) == 100  # The max sum in middle of whole array.
 
 
-
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
@@ -93,11 +92,11 @@ for loop of lines 39 - 42 makes high - mid + 1 iterations, and so the total numb
 (mid - low) + (high - mid + 1) ⟶ high - low + 1 = n.
 
 Running time of find_max_sum_sub_array_recurse:
-We denote by T(n) the running time of find_max_sum_sub_array_recurse on a sub-array of n elements. The base case when n =1
-in line 22 takes constant time so T(1) = ϴ(1). Lines 21, 23, and 24 also take a constant amount of time. Each of
-the sub-problems solved in lines 25 and 26 is on a sub-array of n/2 elements, and so we spend T(n/2) time solving
-each of them. Because we have to solve two sub-problems for the left sub-array and for the right sub-array, the
-contribution to the running time from lines 25 and 26 comes to 2T(n/2). The call to find_max_sum_whole_array in
+We denote by T(n) the running time of find_max_sum_sub_array_recurse on a sub-array of n elements. The base case
+when n =1 in line 22 takes constant time so T(1) = ϴ(1). Lines 21, 23, and 24 also take a constant amount of time.
+Each of the sub-problems solved in lines 25 and 26 is on a sub-array of n/2 elements, and so we spend T(n/2) time
+solving each of them. Because we have to solve two sub-problems for the left sub-array and for the right sub-array,
+the contribution to the running time from lines 25 and 26 comes to 2T(n/2). The call to find_max_sum_whole_array in
 line 27 takes ϴ(n) time, like I demonstrated above. In line 19 checking whether every integer is negative is an
 O(n) operation.
 

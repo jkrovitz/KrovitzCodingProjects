@@ -6,8 +6,7 @@ Programmer: Jeremy Krovitz
 Class: Computer Science 221-01
 Professor: Shilad Sen
 
-Program Summary: This program finds the peak entry in a unimodal array. This array has n numbers in it. I'm
-assuming that any list input will contain at least one number. Therefore, I do not check for an empty list.
+Program Summary: This program finds the peak entry in a unimodal array with n numbers in it. 
 ===================================================================================================================
                                              The Program Itself
 ================================================================================================================"""

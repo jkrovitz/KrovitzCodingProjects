@@ -57,7 +57,6 @@ def find_peak(num_array):
 
 
 def test_find_peak():
-
     assert find_peak([None]) == 0
     assert find_peak([1]) == 0
     assert find_peak([3, 2]) == 0

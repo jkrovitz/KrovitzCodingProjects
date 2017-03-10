@@ -6,10 +6,10 @@ Programmer: Jeremy Krovitz
 Class: Computer Science 221-01
 Professor: Shilad Sen
 
-Program Summary: This program finds the peak entry in a unimodal array with n numbers in it. Edge cases included
-within this program include checking to see whether the list is empty, only has one element, if the numbers only
-increase and never decrease, and if the numbers only decrease and never increase. An additional edge case was
-checking to see whether the input is unimodal being that this is supposed to find the peak of a unimodal array.
+Program Summary: This program finds the peak entry in a unimodal array with n numbers in it. I am assuming that
+numbers are referring to whole numbers (zero and all positive integers). Edge cases in this program include
+checking to see whether the list is empty, if the list only has one element, if the numbers only increase and never
+decrease, if the numbers only decrease and never increase and whether the array is unimodal.
 ===================================================================================================================
                                              The Program Itself
 ================================================================================================================"""
@@ -72,20 +72,21 @@ def test_find_peak():
     assert find_peak([8,7,6,5,4,3,2,3,4,5]) == None
     assert find_peak([8, 7, 6, 5, 4, 5, 6, 7, 8, 3, 2, 3, 4, 5]) == None
     assert find_peak([11,12,13,14,15,16,17,18,19,20]) == 9
-    assert find_peak([0,0,0,0,0,0,0,0]) == None
+    assert find_peak([0, 0, 0, 0, 0, 0, 0, 0]) == None
     assert find_peak([5,5,5,5,5,5,5]) == None
-    assert find_peak([-5,-5,-5,-5,-5]) == None
-    assert find_peak([-2,-1, 0, 1,2,3,1,2,3,2,1,-1]) == None
+    assert find_peak([47, 48, 49, 56, 78, 82, 83, 88, 90, 94, 97, 99, 50, 41]) == 11
     assert find_peak([1,2,6,6,5]) == None
     assert find_peak([11, 15, 15, 13, 14]) == None
     assert find_peak([1,2,3,4,5]) == 4
-    assert find_peak([-1]) == 0
     assert find_peak([355, 345, 335, 325, 315, 305]) == 0
+    assert find_peak([1, 2, 6, 5, 7, 4]) == None
 
 
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
-The recurrence relation for find_peak_recurse is T(n) = T(n/2) + ϴ(1) ⟶ T(n) = n^(Log_(2)1) ⟶ n^0 = 1 * Log n
-⟶ Log n according to the Master Theorem. Therefore, the solution to  this recurrence relation is ϴ(Log n).
+The recurrence relation to find_peak_recurse is T(n) = T(n/2) + c ⟶ T(n) = T(n/4) + c + c
+⟶  T(n) = T(n/8) + c + c + c ⟶ T(n) = T(n/2^k) + c k ⟶ T(n) = T(n/2^(log n)) + c  (log n)
+⟶ T(n) = T(1) + c  (log n) ⟶ T(n) = ϴ(log n) according to the Master Theorem. Therefore,
+the solution to this recurrence relation and time complexity in the worst case is ϴ(log n).
 ================================================================================================================"""

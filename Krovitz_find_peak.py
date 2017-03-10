@@ -66,15 +66,26 @@ def test_find_peak():
     assert find_peak([2, 3, 4, 5, 6, 5, 3, 2, 1]) == 4
     assert find_peak([1, 2, 3, 4, 5, 6, 7, 8, 1]) == 7
     assert find_peak([1, 10, 8, 7, 6, 5, 4, 3]) == 1
-    assert find_peak([ 2,3,4,3,2,3,4,3,2]) == None
+    assert find_peak([2,3,4,3,2,3,4,3,2]) == None
     assert find_peak([2, 3, 4, 3, 2, 3, 4, 5, 2]) == None
     assert find_peak([2, 3, 5, 3, 2, 3, 4, 3, 2]) == None
     assert find_peak([8,7,6,5,4,3,2,3,4,5]) == None
     assert find_peak([8, 7, 6, 5, 4, 5, 6, 7, 8, 3, 2, 3, 4, 5]) == None
+    assert find_peak([11,12,13,14,15,16,17,18,19,20]) == 9
+    assert find_peak([0,0,0,0,0,0,0,0]) == None
+    assert find_peak([5,5,5,5,5,5,5]) == None
+    assert find_peak([-5,-5,-5,-5,-5]) == None
+    assert find_peak([-2,-1, 0, 1,2,3,1,2,3,2,1,-1]) == None
+    assert find_peak([1,2,6,6,5]) == None
+    assert find_peak([11, 15, 15, 13, 14]) == None
+    assert find_peak([1,2,3,4,5]) == 4
+    assert find_peak([-1]) == 0
+    assert find_peak([355, 345, 335, 325, 315, 305]) == 0
+
 
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
-The recurrence relation for find_peak_recurse is T(n) = T(n/2) + ϴ(1) ⟶ T(n) = n^(Log_(2)1) ⟶ n^0 = 1 * Log n 
+The recurrence relation for find_peak_recurse is T(n) = T(n/2) + ϴ(1) ⟶ T(n) = n^(Log_(2)1) ⟶ n^0 = 1 * Log n
 ⟶ Log n according to the Master Theorem. Therefore, the solution to  this recurrence relation is ϴ(Log n).
 ================================================================================================================"""

@@ -8,14 +8,17 @@ Professor: Shilad Sen
 
 Program Summary: This program finds the maximum sum of contiguous integers in the passed-in array. The maximum sum
 may occur in the first half of the array, the second half of the array, or it may span both halves of the array.
-The program assumes that if all of the numbers in the input array are negative, that the empty array will be greater,
-and thus 0 will be returned, since there are not any elements in the array.
+The program assumes that if all of the numbers in the input array are negative, then the empty array will be greater,
+and thus 0 will be returned, since there would not be any elements in the array if the array were empty.
 ===================================================================================================================
                                              The Program Itself
 ================================================================================================================"""
 
 
 def find_max_sum_sub_array_recurse(sum_array, lo, hi):
+    """This function uses the divide and conquer approach. It computes the index mid of the midpoint. This divides
+     the array into a left_sub-array and a right sub_array. The conquering happens by recursively finding maximum
+     sub-arrays within the left and right sub-arrays. This function calls find_max_whole_sum_array."""
     if hi == lo:
         return 0
     else:
@@ -32,6 +35,9 @@ def find_max_sum_sub_array_recurse(sum_array, lo, hi):
 
 
 def find_max_whole_sum_array(sum_array, lo, mid, hi):
+    """This function has the added restriction that the subarray that is chosen must cross the midpoint.
+    Any subarray crossing the midpoint is itself made of two subarrays sum_array[i... mid] and
+    sum_array[mid+1, j]. Therefore, we just need to find maximum subarrays of this form and combine them."""
     the_sum = 0
     left_sum = 0
     for i in range(mid, lo-1, -1):
@@ -108,10 +114,10 @@ def test_find_max_sum_sub_array():
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
-Running time of find_max_sum_whole_array:
-We can take the for loop of lines 37 - 40 and find that it makes mid - low - 1 + 1 ⟶ mid - low iterations and the
+Running time of find_max_whole_sum_array:
+We can take the for loop of lines 37 - 40 and find that it makes mid - low - 1 + 1 -> mid - low iterations and the
 for loop of lines 43 - 46 makes high - mid + 1 iterations, and so the total number of iterations is
-(mid - low) + (high - mid + 1) ⟶ high - low + 1 = n.
+(mid - low) + (high - mid + 1) -> high - low + 1 = n.
 
 Running time of find_max_sum_sub_array_recurse:
 We denote by T(n) the running time of find_max_sum_sub_array_recurse on a sub-array of n elements. The base case
@@ -121,6 +127,6 @@ and for the right sub-array, the contribution to the running time comes to 2T(n/
 takes ϴ(n) time, like I demonstrated above.
 
 Running time of the overall program:
-T(n) = ϴ(1) + 2T(n/2) + ϴ(n)  + ϴ(1) ⟶ T(n) =  ϴ(1) + 2T(n/2) + ϴ(n)  + ϴ(1) ⟶ T(n) = 2T(n/2) + ϴ(n)
-⟶ T(n) = ϴ (n log n).
+T(n) = ϴ(1) + 2T(n/2) + ϴ(n)  + ϴ(1) -> T(n) =  ϴ(1) + 2T(n/2) + ϴ(n)  + ϴ(1) -> T(n) = 2T(n/2) + ϴ(n)
+-> T(n) = ϴ (n log n).
 ================================================================================================================"""

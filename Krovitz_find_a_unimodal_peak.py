@@ -6,10 +6,15 @@ Programmer: Jeremy Krovitz
 Class: Computer Science 221-01
 Professor: Shilad Sen
 
-Program Summary: This program finds the peak entry in a unimodal array with n numbers in it. I am assuming that
-numbers are referring to whole numbers (zero and all positive integers). Edge cases in this program include
-checking to see whether the list is empty, if the list only has one element, if the numbers are only decreasing
-over the span of the array, and if the numbers are only increasing over the span of the array.
+Program Summary: This program consists of two functions find_peak_recurse and find_peak. The function
+find_peak recurse really does most of the work. The function find_peak_recurse, finds the peak or the
+maximum value, in a unimodal array with n numbers in it and returns the index position of the peak.
+I assume that numbers are whole numbers (zero and all positive integers). Edge cases in this program
+include checking to see whether the list is empty, if the list only has one element, if the numbers
+are only decreasing over the span of the array and not increasing, and if the numbers are only
+increasing over the span of the array and not decreasing. The fuction find_peak is a wrapper function
+for find_peak_array_recurse. The wrapper function makes it so one does not need to input values for lo,
+hi, and offset for each call and will only need to input the array itself.
 ===================================================================================================================
                                              The Program Itself
 ================================================================================================================"""
@@ -39,8 +44,6 @@ def find_peak_recurse(num_array, lo, hi, offset):
 
 
 def find_peak(num_array):
-    """This is a wrapper function for find_peak_array_recurse. This makes it so one does not need to input
-    values for lo, hi, and offset for each call and will only need to input the array."""
     return find_peak_recurse(num_array, lo=0, hi=len(num_array), offset=0)
 
 """ ===============================================================================================================
@@ -65,11 +68,13 @@ def test_find_peak():
     assert find_peak([1, 2, 3, 4, 5, 6, 7, 8, 1]) == 7
     assert find_peak([1,2,3,4,5]) == 4
     assert find_peak([355, 345, 335, 325, 315, 305]) == 0
+    assert find_peak([30]) == 0
+    assert find_peak([2, 20, 60, 80, 90, 99, 68]) == 5
 """ ===============================================================================================================
                                                 Time Complexity
 ===================================================================================================================
-The recurrence relation to find_peak_recurse is T(n) = T(n/2) + c ⟶ T(n) = T(n/4) + c + c
-⟶  T(n) = T(n/8) + c + c + c ⟶ T(n) = T(n/2^k) + c k ⟶ T(n) = T(n/2^(log n)) + c  (log n)
-⟶ T(n) = T(1) + c  (log n) ⟶ T(n) = ϴ(log n) according to the Master Theorem. Therefore,
+The recurrence relation to find_peak_recurse is T(n) = T(n/2) + c -> T(n) = T(n/4) + c + c
+->  T(n) = T(n/8) + c + c + c -> T(n) = T(n/2^k) + c k -> T(n) = T(n/2^(log n)) + c  (log n)
+-> T(n) = T(1) + c  (log n) -> T(n) = ϴ(log n) according to the Master Theorem. Therefore,
 the solution to this recurrence relation and time complexity in the worst case is ϴ(log n).
 ================================================================================================================"""

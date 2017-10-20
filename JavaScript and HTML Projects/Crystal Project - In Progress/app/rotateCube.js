@@ -31,15 +31,30 @@ scene.add( light );
 var geometry = new three.BoxGeometry(25, 25, 25);
 
 //define embedded ellipse
-var geometry2 = new THREE.SphereGeometry(5,5,5);
-geometry2.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 1.0, 1.0 ) );
+var geometry2 = new THREE.SphereGeometry(5,20,20);
+//geometry2.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 1.0, 1.0 ) );
 
 //define freestanding ellipsoid
-var geometry3 = new three.SphereGeometry(7,7,7);
-geometry3.applyMatrix( new THREE.Matrix4().makeScale( 2.0, 2.0, 2.0 ) );
+var geometry3 = new three.SphereGeometry(6,20,20);
+//geometry3.applyMatrix( new THREE.Matrix4().makeScale( 2.0, 2.0, 2.0 ) );
 
 //define cross section
 var geometry4 = new three.CircleGeometry(10, 60);
+//cross section height
+var heightColor = new three.LineBasicMaterial({color: 0x00FF00});
+var heightLine = new three.Geometry();
+heightLine.vertices.push(new THREE.Vector3(70, 0, 0));
+heightLine.vertices.push(new THREE.Vector3(70, 10, 0));
+var line999 = new THREE.Line(heightLine, heightColor);
+scene.add(line999);
+//cross section width line
+var widthColor = new three.LineBasicMaterial({color: 0xff0000});
+var widthLine = new three.Geometry();
+widthLine.vertices.push(new three.Vector3(70,0,0));
+widthLine.vertices.push(new three.Vector3(80,0,0));
+var line1000 = new three.Line(widthLine, widthColor);
+scene.add(line1000);
+
 
 var material = new three.MeshFaceMaterial([
     new three.MeshFaceMaterial({
@@ -60,11 +75,12 @@ var material = new three.MeshFaceMaterial([
     }),
     new three.MeshFaceMaterial({
           color:0x00ffff, transparent:true, opacity:0.8, side: THREE.DoubleSide
+        
     })
 ]);
 
 var material2 = new THREE.MeshBasicMaterial({
-    color:0xFFFF8800, transparent:true, opacity:1.0, side: THREE.DoubleSide
+    color:0x000000, transparent:true, opacity:0.5, side: THREE.DoubleSide
 });
 
 /* */
@@ -142,11 +158,11 @@ $(renderer.domElement).on('mousedown', function(e) {
         
         cube.quaternion.multiplyQuaternions(deltaRotationQuaternion, cube.quaternion);
         
-        ellipsoid1.quaternion.multiplyQuaternions(deltaRotationQuaternion, ellipsoid1.quaternion);
+        //ellipsoid1.quaternion.multiplyQuaternions(deltaRotationQuaternion, ellipsoid1.quaternion);
         
         ellipsoid2.quaternion.multiplyQuaternions(deltaRotationQuaternion, ellipsoid2.quaternion);
         
-        circle.quaternion.multiplyQuaternions(deltaRotationQuaternion, circle.quaternion);
+//        circle.quaternion.multiplyQuaternions(deltaRotationQuaternion, circle.quaternion);
         
         
     }
@@ -209,3 +225,4 @@ update(0, totalGameTime);
 function toRadians(angle) {
 	return angle * (Math.PI / 180);
 }
+

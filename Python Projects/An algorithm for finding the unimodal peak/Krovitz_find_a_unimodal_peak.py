@@ -1,9 +1,7 @@
-
-
 """ ===============================================================================================================
                                                 Program Summary
 ===================================================================================================================
-Program Title: Find The Peak In A Unimodal Array
+Title: Find The Peak In A Unimodal Array
 Programmer: Jeremy Krovitz
 Class: Computer Science 221-01
 Professor: Shilad Sen
